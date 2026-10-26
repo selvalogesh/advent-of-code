@@ -4,8 +4,8 @@
   "type": "module",
   "description": "Advent of Code 2024 in TypeScript",
   "scripts": {
-    "gen": "sh scripts/gen.sh",
-    "start": "sh scripts/start.sh",
+    "gen": "tsc scripts/gen.ts --module NodeNext && node scripts/gen.js",
+    "start": "tsc && node scripts/start.js",
     "test": "vitest"
   },
   "keywords": [
