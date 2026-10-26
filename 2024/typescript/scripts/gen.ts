@@ -23,8 +23,12 @@ const targetFiles = (dayName: string): Array<string> => [
   `src/${dayName}/__tests__/${dayName}.test.ts`,
 ];
 
-const fetchInput = async (day: number, session: string): Promise<string> => {
-  const url = `https://adventofcode.com/2024/day/${day}/input`;
+const fetchInput = async (
+  year: string,
+  day: number,
+  session: string,
+): Promise<string> => {
+  const url = `https://adventofcode.com/${year}/day/${day}/input`;
   const headers = { cookie: `session=${session}` };
 
   const response = await fetch(url, { headers });
@@ -84,8 +88,18 @@ const pipeAsync =
     );
 
 (async function () {
-  // load environment variables
-  dotenv.config();
+  // load environment variables from the repo root (shared by all years)
+  dotenv.config({ path: path.resolve('../../.env') });
+
+  // the year comes from the folder layout: <year>/<language>
+  const year = path.basename(path.resolve('..'));
+  if (!/^\d{4}$/.test(year)) {
+    console.log(
+      chalk.red('* error ') +
+        `--- Expected to run from <year>/<language>, got ${process.cwd()} ---`,
+    );
+    return;
+  }
 
   // check if exists one only argument
   const dayName = process.argv[2];
@@ -107,7 +121,7 @@ const pipeAsync =
   const day = parseInt(dayName.slice(3));
   const session = process.env.AOC_SESSION ?? '';
 
-  const contentInput = await fetchInput(day, session);
+  const contentInput = await fetchInput(year, day, session);
 
   try {
     // create the input file

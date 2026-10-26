@@ -1,4 +1,30 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+
+# secrets (AOC_SESSION lives in the root .env)
+.env
+
+# puzzle inputs: AoC asks that inputs are not shared publicly
+**/input.txt
+**/resources/data.txt
+
+# node / typescript
 node_modules
 dist
-.DS_Store
-.env
+**/scripts/gen.js
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# rust / java / kotlin
+target/
+build/
+*.class
+
+# go
+bin/

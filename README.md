@@ -1,53 +1,48 @@
-# Advent of Code 2024 TypesScript Template
+# Advent of Code
 
-This is a TypeScript template for [advent of code 2024](https://adventofcode.com/2024).
+My [Advent of Code](https://adventofcode.com/) solutions, across years and languages.
 
-The template was built with
+## Layout
 
-- [pnpm](https://pnpm.io/)
-- [typescript](https://www.typescriptlang.org/)
-- [vitest](https://vitest.dev/)
-
-## Usage
-
-```shell
-$ git clone https://github.com/2wndrhs/aoc-2024-typescript-template.git
-$ cd aoc-2024-typescript-template
-
-# install dependencies
-$ pnpm install
-
-# run tests for day01
-$ pnpm test day01
-
-# run the day01
-$ pnpm start day01
+```
+<year>/<language>/   one self-contained project per year and language
 ```
 
-## Generate
+| Year | Language   | Folder                                 |
+| ---- | ---------- | -------------------------------------- |
+| 2024 | TypeScript | [2024/typescript](2024/typescript)     |
 
-You can generate all necessary files for AoC solution with a simple command:
+Each `<year>/<language>` folder has its own README, dependencies and scripts.
+Run its commands from inside that folder.
 
-```shell
-$ pnpm gen day01
-```
+Shared at the root, for every year and language:
 
-The command creates the following files
+- `.env` — your AoC session cookie (not committed)
+- `.gitignore` — covers all languages, plus puzzle inputs
+- `.prettierrc` — formatting for TypeScript/JavaScript projects
+- `.vscode/launch.json` — debug configs that ask for the year and day
 
-```shell
-* creating src/day01/resources/input.txt
-* creating src/day01/main.ts
-* creating src/day01/part2.ts
-* creating src/day01/part1.ts
-* creating src/day01/__tests__/day01.test.ts
-```
+## Session cookie
 
-For download the inputs from web, you need to set the AOC_SESSION environment variable in `.env` file.
-
-You can get the session value from AoC website cookie. (`Developer Tools` > `Application` > `Cookies`)
-
-The env file should look like below.
+Input download needs your AoC session cookie. Create a `.env` file at the repo root:
 
 ```
 AOC_SESSION={YOUR_AOC_SESSION_VALUE}
 ```
+
+You can get the value from the AoC website cookie
+(`Developer Tools` > `Application` > `Cookies`).
+
+## Puzzle inputs
+
+New inputs (`input.txt`) are git-ignored, as the AoC creator asks that they are
+not shared publicly. They stay on your disk and the generate scripts download them.
+
+## Starting a new year or language
+
+- **Same language, new year** — copy the latest year's folder without its
+  solutions, e.g. `2024/typescript` → `2025/typescript` (skip `src/` and
+  `node_modules/`), then `pnpm install` and `pnpm gen day01`. The year is taken
+  from the folder name.
+- **New language** — create `<year>/<language>/` with that language's own
+  tooling and README, and add a row to the table above.

@@ -5,13 +5,28 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch via NPM",
+      "name": "AoC: TypeScript day",
       "request": "launch",
-      "runtimeArgs": ["run-script", "start", "day06"],
+      "cwd": "${workspaceFolder}/${input:year}/typescript",
+      "runtimeArgs": ["run-script", "start", "${input:day}"],
       "runtimeExecutable": "pnpm",
       "skipFiles": ["<node_internals>/**"],
       "sourceMaps": true,
       "type": "node"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "year",
+      "type": "promptString",
+      "description": "AoC year (folder name)",
+      "default": "2024"
+    },
+    {
+      "id": "day",
+      "type": "promptString",
+      "description": "Day to run (dayXX)",
+      "default": "day06"
     }
   ]
 }
